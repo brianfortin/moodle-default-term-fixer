@@ -3,15 +3,50 @@
 // @match        https://moodle.colby.edu/my/*
 // @run-at       document-idle
 // @grant        none
-// @version 1.0
+// @version 1.1
 // @author Brian Fortin
-// @description changes the Moodle default selected term to the current one.
+// @description Changes Moodle's default selected term to the current one.
 // ==/UserScript==
 
 (function () {
     'use strict';
 
-    const TARGET_VALUE = "40"; // for Fall 2025: TARGET_VALUE = "40"
+    // TARGET_VALUE options:
+    // 37: Fall 2024
+    // 38: JanPlan 2025
+    // 39: Spring 2025
+    // 40: Fall 2025
+    // possible future values
+    // 41: JanPlan 2026
+    // 42 Spring: 2026
+    // et cetera
+
+    // time periods
+    // .getTime() converts values to ms, which can then be compared to Date.now()
+    const periods = [
+        { value: 39, start: new Date("2025-1-29").getTime(), end: new Date("2025-5-31").getTime() }, // Spring 2025
+        { value: 40, start: new Date("2025-06-01").getTime(), end: new Date("2025-12-20").getTime() }, // Fall 2025
+        // extrapolated guesses
+        { value: 41, start: new Date("2025-12-21").getTime(), end: new Date("2026-1-28").getTime() }, // JanPlan 2026
+        { value: 42, start: new Date("2026-1-29").getTime(), end: new Date("2026-5-31").getTime() }, // Spring 2026
+        { value: 43, start: new Date("2026-06-01").getTime(), end: new Date("2026-12-20").getTime() }, // Fall 2026
+        { value: 44, start: new Date("2026-12-21").getTime(), end: new Date("2027-1-28").getTime() }, // JanPlan 2027
+        { value: 45, start: new Date("2027-1-29").getTime(), end: new Date("2027-6-01").getTime() }, // Spring 2027
+    ];
+
+    // get time
+    const now = Date.now();
+
+    // find matching time period
+    const currentPeriod = periods.find(p => now >= p.start && now <= p.end);
+
+    // throw error if time not added
+    if (!currentPeriod) {
+        throw new Error("[Moodle Default Term Fixer EXTENSION] TARGET_VALUE not found within list. Add the value to the variable 'periods' (e.g., 39 = Spring 2025)");
+    }
+
+    // set target value based on matching time period
+    const TARGET_VALUE = currentPeriod.value;
 
     function setDefaultTerm() {
         // find drop down menu
@@ -38,7 +73,7 @@
         select.dispatchEvent(new Event('change', { bubbles: true, cancelable: true }));
 
         // print
-        console.log(`[Moodle Default Term] Applied value: ${TARGET_VALUE}`);
+        console.log("[Moodle Default Term Fixer EXTENSION] Applied value: ${TARGET_VALUE}");
     }
 
     setDefaultTerm();

@@ -3,7 +3,7 @@
 // @match        https://moodle.colby.edu/my/*
 // @run-at       document-idle
 // @grant        none
-// @version 1.1
+// @version 1.2
 // @author Brian Fortin
 // @description Changes Moodle's default selected term to the current one.
 // ==/UserScript==

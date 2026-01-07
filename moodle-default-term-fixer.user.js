@@ -16,9 +16,9 @@
     // 38: JanPlan 2025
     // 39: Spring 2025
     // 40: Fall 2025
+    // 43: JanPlan 2026
     // possible future values
-    // 41: JanPlan 2026
-    // 42 Spring: 2026
+    // 44: Spring 2026
     // et cetera
 
     // time periods
@@ -27,11 +27,11 @@
         { value: 39, start: new Date("2025-01-29").getTime(), end: new Date("2025-05-31").getTime(), extrapolated: false }, // Spring 2025
         { value: 40, start: new Date("2025-06-01").getTime(), end: new Date("2025-12-20").getTime(), extrapolated: false }, // Fall 2025
         // extrapolated guesses
-        { value: 41, start: new Date("2025-12-21").getTime(), end: new Date("2026-01-28").getTime(), extrapolated: true }, // JanPlan 2026
-        { value: 42, start: new Date("2026-01-29").getTime(), end: new Date("2026-05-31").getTime(), extrapolated: true }, // Spring 2026
-        { value: 43, start: new Date("2026-06-01").getTime(), end: new Date("2026-12-20").getTime(), extrapolated: true }, // Fall 2026
-        { value: 44, start: new Date("2026-12-21").getTime(), end: new Date("2027-01-28").getTime(), extrapolated: true }, // JanPlan 2027
-        { value: 45, start: new Date("2027-01-29").getTime(), end: new Date("2027-06-01").getTime(), extrapolated: true }, // Spring 2027
+        { value: 43, start: new Date("2025-12-21").getTime(), end: new Date("2026-01-28").getTime(), extrapolated: true }, // JanPlan 2026
+        { value: 44, start: new Date("2026-01-29").getTime(), end: new Date("2026-05-31").getTime(), extrapolated: true }, // Spring 2026
+        { value: 45, start: new Date("2026-06-01").getTime(), end: new Date("2026-12-20").getTime(), extrapolated: true }, // Fall 2026
+        { value: 48, start: new Date("2026-12-21").getTime(), end: new Date("2027-01-28").getTime(), extrapolated: true }, // JanPlan 2027
+        { value: 49, start: new Date("2027-01-29").getTime(), end: new Date("2027-06-01").getTime(), extrapolated: true }, // Spring 2027
     ];
 
     // get time
